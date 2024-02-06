@@ -1,0 +1,33 @@
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<p>First Name: {{ user.first_name }}</p>
+<p>Last Name: {{ user.last_name }}</p>
+
+
+<div class="row">
+
+    {% if user.image_url %}
+    <div class="col-sm-2 col-6">
+      <img src="{{ user.image_url }}"
+           alt="{{ user.full_name }}"
+           class="img-fluid">
+    </div>
+    {% endif %}
+
+
+
+    <div class="col-sm-10 col-12">
+        <p>{{ user.first_name }} says {{ user.greet() }}!</p>
+
+        <!-- Edit and Delete buttons within a form -->
+        <a href="/{{ user.id }}/edit" class="btn btn-danger btn-sm" role="button">Edit User</a>
+
+        <form method="POST" action="/{{ user.id }}/delete" style="display: inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Delete User</button>
+
+        <a href="/{{ user.id }}/post" class="btn btn-danger btn-sm" role="button">Make a Post</a>
+
+        </form>
+
+        <a href="/">Go back</a>
+    </div>
+</div>
